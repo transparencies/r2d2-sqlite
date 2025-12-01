@@ -161,7 +161,7 @@ impl r2d2::ManageConnection for SqliteConnectionManager {
     }
 
     fn is_valid(&self, conn: &mut Connection) -> Result<(), Error> {
-        conn.execute_batch("").map_err(Into::into)
+        conn.execute_batch("SELECT 1;").map_err(Into::into)
     }
 
     fn has_broken(&self, _: &mut Connection) -> bool {
